@@ -91,7 +91,6 @@ DV-Labs/
 **Notable Decision:**
 > `CALENDAR(MIN(FactSales[OrderDate]), MAX(FactSales[OrderDate]))` was used instead of `CALENDARAUTO()` because DimStore has dates back to 2017 and DimCustomer back to 2019 — which would create thousands of empty date rows outside the 2022–2025 sales window, degrading model performance and breaking YTD measures.
 
-See [`Lab5/DAX_Calendar_Notes.txt`](Lab5/DAX_Calendar_Notes.txt) for full reasoning.
 
 ---
 
