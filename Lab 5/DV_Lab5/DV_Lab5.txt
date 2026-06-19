@@ -1,0 +1,7 @@
+For this lab, using CALENDAR() was the better choice because it keeps the date table clean and accurate to our actual sales.
+
+If you use CALENDARAUTO(), Power BI scans every single date column in the entire file to figure out the start and end years. Since our DimStore table has store opening dates going all the way back to 2017, and DimCustomer has join dates from 2019, CALENDARAUTO() would automatically generate a massive date table starting from 2017.
+
+However, our actual FactSales data only covers 2022 to 2025. Having years of empty dates from 2017 to 2021 just adds thousands of useless rows, which makes the file bigger and can mess up Time Intelligence calculations like YTD.
+
+By using CALENDAR(MIN(FactSales[OrderDate]), MAX(FactSales[OrderDate])), I forced the date table to only cover the exact days where we actually had sales (2022 to 2025). This keeps the model efficient and ensures the date hierarchy matches the reporting periods perfectly.
